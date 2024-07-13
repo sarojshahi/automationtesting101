@@ -20,13 +20,14 @@ time.sleep(3)
 page_height = driver.execute_script("return document.body.scrollHeight")
 print(page_height)
 
-#scroll down the content
+#scroll down the contentbr
 scroll_speed = 200
 scroll_iterations = int(page_height/scroll_speed)
 
 #loop the iteration performance
 for _ in range(scroll_iterations):
-    driver.execute_script(f"window.scrollBy(0,{scroll_speed}:)")
+    driver.execute_script(f"window.scrollBy(0,{scroll_speed});")
+    time.sleep(1)
 
 #print the website title
 website_title = driver.title
@@ -34,4 +35,3 @@ print(f"The title of the website is {website_title}")
 
 #exit the driver stance
 driver.quit()
-driver
