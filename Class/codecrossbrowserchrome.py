@@ -24,5 +24,18 @@ website_title = driver.title
 print(f"The Website title is {website_title}")
 print("Congratulations!!! Your Automation script is working fine!!!")
 
+#calculate the page height of the webpage
+page_height = driver.execute_script("return document.body.scrollHeight")
+print(page_height)
+
+#scroll down the content
+scroll_speed = 1000
+scroll_iterations = int(page_height/scroll_speed)
+
+#loop the iteration performance
+for _ in range(scroll_iterations):
+    driver.execute_script(f"window.scrollBy(0,{scroll_speed});")
+    time.sleep(1)
+
 #finally quit the driver instance
 driver.quit()

@@ -29,6 +29,7 @@ time.sleep(1)
 #     driver.execute_script(f"window.scrollBy(0,{scroll_speed});")
 #     time.sleep(1)
 
+
 #find the element by xpath
 full_name = driver.find_element(By.XPATH, '//input[@id="userName"]')
 primary_email = driver.find_element(By.XPATH, '//input[@id="userEmail"]')

@@ -23,5 +23,17 @@ website_title = driver.title
 print(f"The title of the website is {website_title}")
 print("Thanks for remembering")
 
+#calculate the height of the page
+page_height = driver.execute_script("return document.body.scrollHeight")
+
+#set the scroll speed and iteration
+scroll_speed = 1000
+scroll_iterations = int(page_height/scroll_speed)
+
+#set the iteration loop
+for _ in range(scroll_iterations):
+    driver.execute_script(f"window.scrollBy(0,{scroll_speed});")
+    time.sleep(0.6)
+
 #exit the stance
 driver.quit()
