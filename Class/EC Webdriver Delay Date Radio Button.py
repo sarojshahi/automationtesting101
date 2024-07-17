@@ -40,6 +40,7 @@ last_name.send_keys("Shahi")
 email_field.send_keys("saroj.shai.c4@gmail.com")
 gender_male.click()
 mobile_number.send_keys("9818839688")
+date_of_birth.clear()
 date_of_birth.send_keys("15/04/1995")
 #interact with the sports checkbox
 driver.execute_script("arguments[0].click();", hobby_sport_checkbox)
