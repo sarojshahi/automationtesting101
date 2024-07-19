@@ -1,3 +1,6 @@
+import random
+import string
+
 from selenium import webdriver
 import re
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -42,19 +45,34 @@ driver.maximize_window()
 #     time.sleep(2)
 
 #interact with the path locator
-full_name = driver.find_element(*(By.XPATH,"//input[@placeholder='Name']"))
+name_field = driver.find_element(*(By.XPATH,"//input[@placeholder='Name']"))
 email_field = driver.find_element(*(By.XPATH,"//input[@placeholder='Email']"))
-phone = driver.find_element(*(By.XPATH,"//input[@placeholder='Phone']"))
-subject = driver.find_element(*(By.XPATH,"//input[@placeholder='Subject']"))
-any_queries = driver.find_element(*(By.XPATH,"//textarea[@placeholder='Queries']"))
+phone_field = driver.find_element(*(By.XPATH,"//input[@placeholder='Phone']"))
+subject_field = driver.find_element(*(By.XPATH,"//input[@placeholder='Subject']"))
+queries_field = driver.find_element(*(By.XPATH,"//textarea[@placeholder='Queries']"))
 
+
+#function to generate random email:
+def generate_random_email():
+    domain = "test.com"
+    email_length = 8
+    random_string = ''.join(random.choice(string.ascii_lowercase)for _ in range(email_length))
+    email = random_string + "@" + domain
+    return email
+
+def generate_random_name():
+    return "".join(random.choices(string.ascii_letters, k = 5))
+
+def generate_random_phone():
+    phone = "98"+''.join(random.choices(string.digits,k=8))
+    return phone
 
 #passing the value in the variable
-name="Saroj Shahi"
-email="sarojshaic4@gmail.com"
-phoneno="9818839asv"
-subjectarea="Quality Assurance"
-anyqueries="Yes Please"
+name= generate_random_name()
+email = generate_random_email()
+phone = generate_random_phone()
+subject="Quality Assurance"
+any_queries="Yes Please"
 
 time.sleep(2)
 
@@ -64,18 +82,25 @@ if is_valid_email(email):
 else:
     print("The given email is invalid")
 
+#check the phone and email are empty or not
+if not email:
+    print("The Email field is empty")
+
+if not phone:
+    print("The Phone field is empty")
+
 
 #Sending values to the forms
-full_name.send_keys(name)
+name_field.send_keys(name)
 email_field.send_keys(email)
-phone.send_keys(phoneno)
-subject.send_keys(subjectarea)
-any_queries.send_keys(anyqueries)
+phone_field.send_keys(phone)
+subject_field.send_keys(subject)
+queries_field.send_keys(any_queries)
 
 time.sleep(2)
 
 #check the validity of the phone
-if is_valid_phone(phoneno):
+if is_valid_phone(phone):
     print("The given number is valid")
 else:
     print("the given number is invalid")
