@@ -15,4 +15,3 @@ def test_google_search():
     website =  driver.get("https://www.google.com/")
     driver.maximize_window()
     time.sleep(3)
-    search_button = driver.find_element(By.XPATH,"")
