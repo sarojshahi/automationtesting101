@@ -53,7 +53,10 @@ import pytest
 from Class.pom.pages.login_page import LoginPage
 from Class.pom.pages.dashboard_page import DashboardPage
 from Class.pom.pages.aboutus_page import AboutUsPage
-from selenium.webdriver.common.keys import Keys
+from Class.pom.pages.articles_page import ArticlesPage
+from Class.pom.pages.contact_me_page import ContactMe
+from Class.pom.pages.qa_testing_page import QaTesting
+from Class.pom.pages.company_page import Company
 
 
 @pytest.fixture()
@@ -115,3 +118,46 @@ def test_aboutus(driver):
     time.sleep(2)
 
     print("The about us page has been tested successfully")
+
+def test_articles(driver):
+    articles = ArticlesPage(driver)
+    articles.open_page("https://sagar-test-qa.vercel.app/articles.html")
+    driver.maximize_window()
+    time.sleep(1)
+    articles.scroll_window()
+    time.sleep(1)
+
+    print("The Articles Page has been tested successfully")
+
+
+def test_contact_me(driver):
+    contact = ContactMe(driver)
+    contact.open_page("https://sagar-test-qa.vercel.app/contact.html")
+    driver.maximize_window()
+    time.sleep(1)
+    contact.enter_name("Saroj Shahi")
+    time.sleep(1)
+    contact.enter_email("saroj@gmail.com")
+    time.sleep(1)
+    contact.enter_message("This is a test")
+    time.sleep(1)
+    contact.click_send_message()
+    time.sleep(1)
+
+    print("Your contact me page has been tested successfully")
+
+def test_qa_testing(driver):
+    qa_testing = QaTesting(driver)
+    qa_testing.open_page("https://sagar-test-qa.vercel.app/qa.html")
+    driver.maximize_window()
+    time.sleep(1)
+    qa_testing.scroll_window()
+    time.sleep(1)
+
+def test_company(driver):
+    company = Company(driver)
+    company.open_page("https://sagar-test-qa.vercel.app/company.html")
+    driver.maximize_window()
+    time.sleep(1)
+    company.scroll_window()
+    time.sleep(1)

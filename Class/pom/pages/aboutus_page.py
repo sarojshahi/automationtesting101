@@ -27,3 +27,5 @@ class AboutUsPage:
 
     def click_submit(self):
         self.driver.find_element(*self.submit_button).click()
+
+
